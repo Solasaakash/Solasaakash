@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .menu {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        input {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1>Menu</h1>
+        <button onclick="performOperation(1)">Add</button>
+        <button onclick="performOperation(2)">Multiply</button>
+
+        <div id="inputFields" style="display: none;">
+            <input type="number" id="number1" placeholder="Enter first number">
+            <input type="number" id="number2" placeholder="Enter second number">
+            <button onclick="calculateResult()">Calculate</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        let operation;
+
+        function performOperation(choice) {
+            operation = choice;
+            document.getElementById('inputFields').style.display = 'block';
+            document.getElementById('result').innerText = '';
+        }
+
+        function calculateResult() {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').innerText = 'Please enter valid numbers.';
+                return;
+            }
+
+            if (operation === 1) {
+                result = num1 + num2;
+                document.getElementById('result').innerText = `The sum is: ${result}`;
+            } else if (operation === 2) {
+                result = num1 * num2;
+                document.getElementById('result').innerText = `The product is: ${result}`;
+            }
+        }
+    </script>
+</body>
+</html>
