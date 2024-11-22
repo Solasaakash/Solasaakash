@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            width: 150px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Simple Interest Calculator</h1>
+        <div class="input-group">
+            <input type="number" id="principal" placeholder="Principal Amount" value="5000">
+            <input type="number" id="tenure" placeholder="Tenure (Years)" value="1">
+            <input type="number" id="rate" placeholder="Rate of Interest (%)" value="2.5">
+        </div>
+        <button onclick="calculateSimpleInterest()">Calculate Interest</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateSimpleInterest() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const tenure = parseFloat(document.getElementById('tenure').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+
+            if (isNaN(principal) || isNaN(tenure) || isNaN(rate)) {
+                document.getElementById('result').innerText = 'Please enter valid numbers.';
+                return;
+            }
+
+            const simpleInterest = (principal * tenure * rate) / 100;
+            document.getElementById('result').innerText = `The Simple Interest is: Rs.${simpleInterest.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
