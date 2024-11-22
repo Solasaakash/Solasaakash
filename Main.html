@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator Menu</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 5rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(243, 239, 239, 0.999);
+}
+
+.button-container {
+    display: flex;
+    gap: 5rem;
+}
+
+button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+button:nth-child(1) {
+    background-color: #2ecc71;
+}
+
+button:nth-child(1):hover {
+    background-color: #27ae60;
+}
+
+button:nth-child(2) {
+    background-color: #e74c3c;
+}
+
+button:nth-child(2):hover {
+    background-color: #c0392b;
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+</style>
+<body>
+    <fieldset>
+    <h2>Calculator Menu</h2>
+    <button onclick="calculate(1)">1. Add</button>
+    <button onclick="calculate(2)">2. Multiply</button>
+</fieldset>
+    <script>
+        function calculate(choice) {
+            let num1 = parseFloat(prompt("Enter first number:"));
+            let num2 = parseFloat(prompt("Enter second number:"));
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+            
+            if (choice === 1) {
+                alert(`Sum of ${num1} and ${num2} is: ${num1 + num2}`);
+            } else {
+                alert(`Product of ${num1} and ${num2} is: ${num1 * num2}`);
+            }
+        }
+    </script>
+</body>
+</html>
